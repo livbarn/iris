@@ -8,8 +8,8 @@ package main
 import (
 	"reflect"
 
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/context"
 )
 
 // Create your own custom Context, put any fields you wanna need.
@@ -70,7 +70,7 @@ func main() {
 	// this will be executed by the MyContext.Context
 	// if MyContext is not directly define the View function by itself.
 	app.Handle("GET", "/hi/{firstname:alphabetical}", recordWhichContextJustForProofOfConcept, func(ctx iris.Context) {
-		firstname := ctx.Values().GetString("firstname")
+		firstname := ctx.Params().Get("firstname") // ctx.Values().GetString("firstname")
 
 		ctx.ViewData("firstname", firstname)
 		ctx.Gzip(true)

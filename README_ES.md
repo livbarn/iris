@@ -8,9 +8,7 @@ Iris es un framework web rápido, simple pero con muchas funcionalidades y muy e
 
 Descubra lo que [otros dicen sobre Iris](https://iris-go.com/testimonials/) y **siga** :star: este repositorio github.
 
-> Version 11.2 **liberado!**
-
-[![https://www.facebook.com/iris.framework/posts/3276606095684693](https://iris-go.com/images/iris-112-released.png)](https://www.facebook.com/iris.framework/posts/3276606095684693)
+> Iris **version 12 liberado**. Lea mas [aquí](HISTORY_ES.md#sábado-26-de-octubre-2019--v1200).
 
 ## Aprende Iris
 
@@ -25,7 +23,7 @@ $ cat ejemplo.go
 ```go
 package main
 
-import "github.com/kataras/iris"
+import "github.com/kataras/iris/v12"
 
 func main() {
     app := iris.Default()
@@ -56,9 +54,11 @@ Para obtener una documentación técnica más detallada, puede dirigirse a nuest
 
 ### ¿Te gusta leer mientras viajas?
 
-<a href="https://bit.ly/iris-request-book"> <img alt="Book cover" src="https://iris-go.com/images/iris-book-cover-sm.jpg" width="200" /> </a>
+<a href="https://bit.ly/iris-req-book"> <img alt="Book cover" src="https://iris-go.com/images/iris-book-cover-sm.jpg" width="200" /> </a>
 
-Puedes [solicitar](https://bit.ly/iris-request-book) una versión en PDF y acceso en línea del **E-Book** hoy y participar en el desarrollo de Iris.
+[![follow author](https://img.shields.io/twitter/follow/makismaropoulos.svg?style=for-the-badge)](https://twitter.com/intent/follow?screen_name=makismaropoulos)
+
+Puedes [solicitar](https://bit.ly/iris-req-book) una versión en PDF y acceso en línea del **E-Book** hoy y participar en el desarrollo de Iris.
 
 ## Contribuir
 

@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12/context"
 
 	"github.com/CloudyKit/jet"
 )
@@ -47,6 +47,10 @@ var jetExtensions = [...]string{
 
 // Jet creates and returns a new jet view engine.
 func Jet(directory, extension string) *JetEngine {
+	// if _, err := os.Stat(directory); os.IsNotExist(err) {
+	// 	panic(err)
+	// }
+
 	extOK := false
 	for _, ext := range jetExtensions {
 		if ext == extension {

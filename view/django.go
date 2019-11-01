@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/kataras/iris/context"
+	"github.com/kataras/iris/v12/context"
 
 	"github.com/flosch/pongo2"
 )
@@ -209,6 +209,11 @@ func (s *DjangoEngine) Load() error {
 	if err != nil {
 		return err
 	}
+
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		return err
+	}
+
 	// change the directory field configuration, load happens after directory has been set, so we will not have any problems here.
 	s.directory = dir
 	return s.loadDirectory()

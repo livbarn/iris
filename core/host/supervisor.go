@@ -3,6 +3,7 @@ package host
 import (
 	"context"
 	"crypto/tls"
+	"errors"
 	"net"
 	"net/http"
 	"strings"
@@ -12,8 +13,7 @@ import (
 
 	"golang.org/x/crypto/acme/autocert"
 
-	"github.com/kataras/iris/core/errors"
-	"github.com/kataras/iris/core/netutil"
+	"github.com/kataras/iris/v12/core/netutil"
 )
 
 // Configurator provides an easy way to modify
@@ -260,7 +260,7 @@ func (su *Supervisor) ListenAndServeTLS(certFile string, keyFile string) error {
 	}
 
 	if su.Server.TLSConfig == nil {
-		return errors.New("certFile or keyFile missing")
+		return errors.New("empty certFile or keyFile and Server.TLSConfig")
 	}
 
 	return su.supervise(func() error { return su.Server.ListenAndServeTLS("", "") })

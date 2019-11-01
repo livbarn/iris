@@ -23,7 +23,7 @@ $ cat example.go
 ```go
 package main
 
-import "github.com/kataras/iris"
+import "github.com/kataras/iris/v12"
 
 func main() {
     app := iris.Default()
@@ -53,9 +53,11 @@ Iris 包含详细而完整的 **[文档](https://github.com/kataras/iris/wiki)**
 
 ### 你喜欢在旅行中看书吗？
 
-你现在可以 [获取](https://bit.ly/iris-request-book) PDF版本和在线访问我们的 **电子书** 并参与 Iris 的开发。
+你现在可以 [获取](https://bit.ly/iris-req-book) PDF版本和在线访问我们的 **电子书** 并参与 Iris 的开发。
 
-[![https://iris-go.com/images/iris-book-overview.png](https://iris-go.com/images/iris-book-overview.png)](https://bit.ly/iris-request-book)
+[![https://iris-go.com/images/iris-book-overview.png](https://iris-go.com/images/iris-book-overview.png)](https://bit.ly/iris-req-book)
+
+[![follow author](https://img.shields.io/twitter/follow/makismaropoulos.svg?style=for-the-badge)](https://twitter.com/intent/follow?screen_name=makismaropoulos)
 
 ## 贡献
 

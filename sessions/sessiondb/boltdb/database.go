@@ -1,13 +1,13 @@
 package boltdb
 
 import (
+	"errors"
 	"os"
 	"path/filepath"
 	"runtime"
 	"time"
 
-	"github.com/kataras/iris/core/errors"
-	"github.com/kataras/iris/sessions"
+	"github.com/kataras/iris/v12/sessions"
 
 	bolt "github.com/etcd-io/bbolt"
 	"github.com/kataras/golog"

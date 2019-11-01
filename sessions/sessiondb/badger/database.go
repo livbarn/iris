@@ -2,13 +2,13 @@ package badger
 
 import (
 	"bytes"
+	"errors"
 	"os"
 	"runtime"
 	"sync/atomic"
 	"time"
 
-	"github.com/kataras/iris/core/errors"
-	"github.com/kataras/iris/sessions"
+	"github.com/kataras/iris/v12/sessions"
 
 	"github.com/dgraph-io/badger"
 	"github.com/kataras/golog"
@@ -47,7 +47,7 @@ var _ sessions.Database = (*Database)(nil)
 // It will remove any old session files.
 func New(directoryPath string) (*Database, error) {
 	if directoryPath == "" {
-		return nil, errors.New("directoryPath is missing")
+		return nil, errors.New("directoryPath is empty")
 	}
 
 	lindex := directoryPath[len(directoryPath)-1]

@@ -2,35 +2,14 @@
 
 # Iris <a href="README_ZH.md"><img width="20px" src="https://iris-go.com/images/flag-china.svg?v=10" /></a> <a href="README_GR.md"><img width="20px" src="https://iris-go.com/images/flag-greece.svg?v=10" /></a> <a href="README_ES.md"><img width="20px" src="https://iris-go.com/images/flag-spain.png" /></a> <a href="README_KO.md"><img width="20px" src="https://iris-go.com/images/flag-south-korea.svg" /></a> <a href="README_FA.md"><img width="20px" src="https://iris-go.com/images/flag-iran.svg" /></a>
 
-[![build status](https://img.shields.io/travis/kataras/iris/master.svg?style=for-the-badge)](https://travis-ci.org/kataras/iris) [![report card](https://img.shields.io/badge/report%20card-a%2B-ff3333.svg?style=for-the-badge)](https://goreportcard.com/report/github.com/kataras/iris)<!--[![godocs](https://img.shields.io/badge/go-%20docs-488AC7.svg?style=for-the-badge)](https://godoc.org/github.com/kataras/iris)--> [![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg?style=for-the-badge)](https://github.com/kataras/iris/tree/master/_examples) [![chat](https://img.shields.io/gitter/room/iris_go/community.svg?color=blue&logo=gitter&style=for-the-badge)](https://gitter.im/iris_go/community) [![release](https://img.shields.io/badge/release%20-v11.2-0077b3.svg?style=for-the-badge)](https://github.com/kataras/iris/releases)
+[![build status](https://img.shields.io/travis/kataras/iris/master.svg?style=for-the-badge)](https://travis-ci.org/kataras/iris) [![report card](https://img.shields.io/badge/report%20card-a%2B-ff3333.svg?style=for-the-badge)](https://goreportcard.com/report/github.com/kataras/iris)<!--[![godocs](https://img.shields.io/badge/go-%20docs-488AC7.svg?style=for-the-badge)](https://godoc.org/github.com/kataras/iris)--> [![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg?style=for-the-badge)](https://github.com/kataras/iris/tree/master/_examples) [![chat](https://img.shields.io/gitter/room/iris_go/community.svg?color=blue&logo=gitter&style=for-the-badge)](https://gitter.im/iris_go/community) [![release](https://img.shields.io/badge/release%20-v12.0-0077b3.svg?style=for-the-badge)](https://github.com/kataras/iris/releases)
 
 Iris is a fast, simple yet fully featured and very efficient web framework for Go. It provides a beautifully expressive and easy to use foundation for your next website or API.
 
 Learn what [others say about Iris](https://iris-go.com/testimonials/) and **star** this github repository.
 
-> Version 11.2 **released!**
 
-[![https://www.facebook.com/iris.framework/posts/3276606095684693](https://iris-go.com/images/iris-112-released.png)](https://www.facebook.com/iris.framework/posts/3276606095684693)
-
-## It's your time to decide
-
-The Go Team released the go modules[...](https://github.com/kataras/iris/issues/1370)
-
-[![](https://api.gh-polls.com/poll/01DP9QJSMZK2FHP9K5CM712CQT/Keep%20the%20same%20import%20path)](https://api.gh-polls.com/poll/01DP9QJSMZK2FHP9K5CM712CQT/Keep%20the%20same%20import%20path/vote)
-[![](https://api.gh-polls.com/poll/01DP9QJSMZK2FHP9K5CM712CQT/Add%20version%20suffix)](https://api.gh-polls.com/poll/01DP9QJSMZK2FHP9K5CM712CQT/Add%20version%20suffix/vote)
-
-> Read how [we support you](https://github.com/kataras/iris/wiki/Support).
-
-[![Iris vs .NET Core(C#) vs Node.js (Express)](https://github.com/kataras/iris/raw/master/_benchmarks/benchmarks_graph_22_october_2018_gray.png)](https://github.com/kataras/iris/blob/master/_benchmarks/README.md)
-
-<details>
-<summary>Third-party benchmark</summary>
-
-[![](https://github.com/kataras/iris/raw/master/_benchmarks/benchmarks_third_party_source_snapshot_go_23_october_2018.png)](https://github.com/iris-contrib/third-party-benchmarks#full-table)
-
-> Last updated at: 01 March of 2019. Click to the image to view all results. You can run this in your own hardware by following the [steps here](https://github.com/iris-contrib/third-party-benchmarks#usage).
-
-</details>
+Iris **version 12 released**. Read more [here](HISTORY.md#sa-26-october-2019--v1200).
 
 ## Learning Iris
 
@@ -45,7 +24,7 @@ $ cat example.go
 ```go
 package main
 
-import "github.com/kataras/iris"
+import "github.com/kataras/iris/v12"
 
 func main() {
     app := iris.Default()
@@ -75,10 +54,11 @@ For a more detailed technical documentation you can head over to our [godocs](ht
 
 ### Do you like to read while traveling?
 
-<a href="https://bit.ly/iris-request-book"> <img alt="Book cover" src="https://iris-go.com/images/iris-book-cover-sm.jpg" width="200" /> </a>
+<a href="https://bit.ly/iris-req-book"> <img alt="Book cover" src="https://iris-go.com/images/iris-book-cover-sm.jpg" width="200" /> </a>
 
-You can [request](https://bit.ly/iris-request-book) a PDF version and online access of the **E-Book** today and be participated in the development of Iris.
+[![follow author](https://img.shields.io/twitter/follow/makismaropoulos.svg?style=for-the-badge)](https://twitter.com/intent/follow?screen_name=makismaropoulos)
 
+You can [request](https://bit.ly/iris-req-book) a PDF version and online access of the **E-Book** today and be participated in the development of Iris.
 
 ## Contributing
 

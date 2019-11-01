@@ -21,7 +21,7 @@ $ cat example.go
 ```go
 package main
 
-import "github.com/kataras/iris"
+import "github.com/kataras/iris/v12"
 
 func main() {
     app := iris.Default()
@@ -53,9 +53,11 @@ $ go run example.go
 
 ### Σας αρέσει να διαβάζετε ενώ ταξιδεύετε;
 
-Μπορείτε να [ζητήσετε](https://bit.ly/iris-request-book) σήμερα την PDF έκδοση και την online πρόσβαση στο Ηλεκτρονικό μας **Βιβλίο(E-Book)** και να συμμετάσχετε στην ανάπτυξη του Iris.
+Μπορείτε να [ζητήσετε](https://bit.ly/iris-req-book) σήμερα την PDF έκδοση και την online πρόσβαση στο Ηλεκτρονικό μας **Βιβλίο(E-Book)** και να συμμετάσχετε στην ανάπτυξη του Iris.
 
-[![https://iris-go.com/images/iris-book-overview.png](https://iris-go.com/images/iris-book-overview.png)](https://bit.ly/iris-request-book)
+[![https://iris-go.com/images/iris-book-overview.png](https://iris-go.com/images/iris-book-overview.png)](https://bit.ly/iris-req-book)
+
+[![follow author](https://img.shields.io/twitter/follow/makismaropoulos.svg?style=for-the-badge)](https://twitter.com/intent/follow?screen_name=makismaropoulos)
 
 ## Συνεισφορά
 

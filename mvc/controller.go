@@ -5,11 +5,11 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/kataras/iris/context"
-	"github.com/kataras/iris/core/router"
-	"github.com/kataras/iris/hero"
-	"github.com/kataras/iris/hero/di"
-	"github.com/kataras/iris/macro"
+	"github.com/kataras/iris/v12/context"
+	"github.com/kataras/iris/v12/core/router"
+	"github.com/kataras/iris/v12/hero"
+	"github.com/kataras/iris/v12/hero/di"
+	"github.com/kataras/iris/v12/macro"
 
 	"github.com/kataras/golog"
 )
@@ -273,7 +273,11 @@ func (c *ControllerActivator) activate() {
 }
 
 func (c *ControllerActivator) addErr(err error) bool {
-	return c.router.GetReporter().AddErr(err)
+	if c.router.GetReporter().Err(err) != nil {
+		return true
+	}
+
+	return false
 }
 
 // register all available, exported methods to handlers if possible.

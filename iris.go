@@ -4,6 +4,7 @@ import (
 	// std packages
 
 	stdContext "context"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -16,27 +17,27 @@ import (
 	"github.com/kataras/golog"
 
 	// context for the handlers
-	"github.com/kataras/iris/context"
-	// core packages, needed to build the application
-	"github.com/kataras/iris/core/errors"
-	"github.com/kataras/iris/core/host"
-	"github.com/kataras/iris/core/netutil"
-	"github.com/kataras/iris/core/router"
+	"github.com/kataras/iris/v12/context"
+	// core packages, required to build the application
+	"github.com/kataras/iris/v12/core/errgroup"
+	"github.com/kataras/iris/v12/core/host"
+	"github.com/kataras/iris/v12/core/netutil"
+	"github.com/kataras/iris/v12/core/router"
 
 	// handlerconv conversions
-	"github.com/kataras/iris/core/handlerconv"
+	"github.com/kataras/iris/v12/core/handlerconv"
 	// cache conversions
-	"github.com/kataras/iris/cache"
+	"github.com/kataras/iris/v12/cache"
 	// view
-	"github.com/kataras/iris/view"
+	"github.com/kataras/iris/v12/view"
 	// middleware used in Default method
 
-	requestLogger "github.com/kataras/iris/middleware/logger"
-	"github.com/kataras/iris/middleware/recover"
+	requestLogger "github.com/kataras/iris/v12/middleware/logger"
+	"github.com/kataras/iris/v12/middleware/recover"
 )
 
 // Version is the current version number of the Iris Web Framework.
-const Version = "11.2.8"
+const Version = "12.0.0"
 
 // HTTP status codes as registered with IANA.
 // See: http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml.
@@ -433,7 +434,7 @@ var (
 	// Cache304 sends a `StatusNotModified` (304) whenever
 	// the "If-Modified-Since" request header (time) is before the
 	// time.Now() + expiresEvery (always compared to their UTC values).
-	// Use this, which is a shortcut of the, `chache#Cache304` instead of the "github.com/kataras/iris/cache" or iris.Cache
+	// Use this, which is a shortcut of the, `chache#Cache304` instead of the "github.com/kataras/iris/v12/cache" or iris.Cache
 	// for better performance.
 	// Clients that are compatible with the http RCF (all browsers are and tools like postman)
 	// will handle the caching.
@@ -804,19 +805,31 @@ func Raw(f func() error) Runner {
 // Build sets up, once, the framework.
 // It builds the default router with its default macros
 // and the template functions that are very-closed to iris.
+//
+// If error occured while building the Application, the returns type of error will be an *errgroup.Group
+// which let the callers to inspect the errors and cause, usage:
+//
+// import "github.com/kataras/iris/v12/core/errgroup"
+//
+// errgroup.Walk(app.Build(), func(typ interface{}, err error) {
+// 	app.Logger().Errorf("%s: %s", typ, err)
+// })
 func (app *Application) Build() error {
-	rp := errors.NewReporter()
+	rp := errgroup.New("Application Builder")
 
 	app.once.Do(func() {
-		rp.Describe("api builder: %v", app.APIBuilder.GetReport())
+		rp.Err(app.APIBuilder.GetReporter())
 
 		if !app.Router.Downgraded() {
 			// router
 			// create the request handler, the default routing handler
 			routerHandler := router.NewDefaultHandler()
+			err := app.Router.BuildRouter(app.ContextPool, routerHandler, app.APIBuilder, false)
+			if err != nil {
+				rp.Err(err)
+			}
 
-			rp.Describe("router: %v", app.Router.BuildRouter(app.ContextPool, routerHandler, app.APIBuilder, false))
-			// re-build of the router from outside can be done with;
+			// re-build of the router from outside can be done with
 			// app.RefreshRouter()
 		}
 
@@ -828,11 +841,13 @@ func (app *Application) Build() error {
 			rv := router.NewRoutePathReverser(app.APIBuilder)
 			app.view.AddFunc("urlpath", rv.Path)
 			// app.view.AddFunc("url", rv.URL)
-			rp.Describe("view: %v", app.view.Load())
+			if err := app.view.Load(); err != nil {
+				rp.Group("View Builder").Err(err)
+			}
 		}
 	})
 
-	return rp.Return()
+	return errgroup.Check(rp)
 }
 
 // ErrServerClosed is returned by the Server's Serve, ServeTLS, ListenAndServe,
@@ -858,7 +873,8 @@ func (app *Application) Run(serve Runner, withOrWithout ...Configurator) error {
 	// first Build because it doesn't need anything from configuration,
 	// this gives the user the chance to modify the router inside a configurator as well.
 	if err := app.Build(); err != nil {
-		return errors.PrintAndReturnErrors(err, app.logger.Errorf)
+		app.logger.Error(err)
+		return err
 	}
 
 	app.Configure(withOrWithout...)

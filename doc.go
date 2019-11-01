@@ -38,13 +38,13 @@ Source code and other details for the project are available at GitHub:
 
 Current Version
 
-11.2.8
+12.0.1
 
 Installation
 
-The only requirement is the Go Programming Language, at least version 1.12.
+The only requirement is the Go Programming Language, at least version 1.13.
 
-    $ go get github.com/kataras/iris@master
+    $ go get github.com/kataras/iris/v12@latest
 
 Wiki:
 
